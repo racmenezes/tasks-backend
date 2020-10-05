@@ -73,4 +73,13 @@ public class TaskControllerTest {
         Mockito.verify(taskRepo).save(todo);
     }
 
+    @Test
+    public void mustSaveOneTasksWithFutureDateSuccessful() throws ValidationException {
+        Task todo = new Task();
+        todo.setTask("Task to test");
+        todo.setDueDate(LocalDate.now().plusMonths(1));
+        taskController.save(todo);
+        Mockito.verify(taskRepo).save(todo);
+    }
+
 }
