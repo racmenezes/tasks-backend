@@ -59,7 +59,7 @@ pipeline {
         }
         stage('Functional Test') {
             steps {
-                dir('functional-test') {
+                dir('functional-tests') {
                     git credentialsId: 'GitHubLogin', url: 'https://github.com/racmenezes/tasks-functional-test'
                     bat "mvn clean test"
                 }
