@@ -38,7 +38,7 @@ pipeline {
             steps {
                 dir('tasks-api-test') {
                     git credentialsId: 'GitHubLogin', url: 'https://github.com/racmenezes/tasks-api-test'
-                    bat "mvn test"
+                    bat "mvn clean test"
                 }
             }
         }
