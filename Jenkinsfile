@@ -71,5 +71,14 @@ pipeline {
                 bat "docker-compose up -d"
             }
         }
+        stage('Health Check') {
+            steps {
+                sleep(30)
+                dir('tasks-functional-test') {
+                    git credentialsId: 'GitHubLogin', url: 'https://github.com/racmenezes/tasks-functional-test'
+                    bat "mvn verify -Dskip.surefire.tests"
+                }
+            }
+        }
     }
 }
